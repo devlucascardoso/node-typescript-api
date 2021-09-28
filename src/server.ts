@@ -1,4 +1,4 @@
-import './util/module-alias';
+//import './util/module-alias'; -> ESTÁ DANDO ERRO NISSO :/
 import { Server } from '@overnightjs/core';
 import { Application } from 'express';
 import bodyParser from 'body-parser';
