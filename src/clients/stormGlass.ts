@@ -91,7 +91,7 @@ export class StormGlass {
         }
       );
       return this.normalizeResponse(response.data);
-    } catch (err : any) {
+    } catch (err: any) {
       /**
        * This is handling the Axios errors specifically
        */
