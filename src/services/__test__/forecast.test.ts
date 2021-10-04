@@ -1,8 +1,7 @@
-import { StormGlass } from '../../src/clients/stormGlass';
-import stormGlassNormalizedResponseFixture from '../../test/fixtures/stormglass_normalized_response_3_hours.json';
+import { StormGlass } from '../../../src/clients/stormGlass';
+import stormGlassNormalizedResponseFixture from '../../../test/fixtures/stormglass_normalized_response_3_hours.json';
 import { Forecast, ForecastProcessingInternalError } from '../forecast';
-import { Beach, BeachPosition } from '../../src/models/beach';
-
+import { Beach, BeachPosition } from '../../../src/models/beach';
 
 jest.mock('@src/clients/stormGlass');
 
@@ -22,6 +21,7 @@ describe('Forecast Service', () => {
     ];
     const expectedResponse = [
       {
+        time: '2020-04-26T00:00:00+00:00',
         forecast: [
           {
             lat: -33.792726,
@@ -41,6 +41,7 @@ describe('Forecast Service', () => {
         ],
       },
       {
+        time: '2020-04-26T01:00:00+00:00',
         forecast: [
           {
             lat: -33.792726,
@@ -60,6 +61,7 @@ describe('Forecast Service', () => {
         ],
       },
       {
+        time: '2020-04-26T02:00:00+00:00',
         forecast: [
           {
             lat: -33.792726,
@@ -99,12 +101,12 @@ describe('Forecast Service', () => {
         position: BeachPosition.E,
       },
     ];
-
     mockedStormGlassService.fetchPoints.mockRejectedValue(
       'Error fetching data'
-      );
-
-      const forecast = new Forecast(mockedStormGlassService);
-      await expect(forecast.processForecastForBeaches(beaches)).rejects.toThrow(Error);
-  })
+    );
+    const forecast = new Forecast(mockedStormGlassService);
+    await expect(
+      forecast.processForecastForBeaches(beaches)
+    ).rejects.toThrowError(ForecastProcessingInternalError);
   });
+});
