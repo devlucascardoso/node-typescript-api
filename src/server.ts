@@ -1,4 +1,4 @@
-//import './util/module-alias'; -> ESTÁ DANDO ERRO NISSO :/
+import './util/module-alias';
 import { Server } from '@overnightjs/core';
 import { Application } from 'express';
 import bodyParser from 'body-parser';
@@ -36,6 +36,10 @@ export class SetupServer extends Server {
     this.addControllers([forecastController, beachesController]);
   }
 
+  public getApp(): Application {
+    return this.app;
+  }
+
   private async databaseSetup(): Promise<void> {
     await database.connect();
   }
@@ -44,7 +48,9 @@ export class SetupServer extends Server {
     await database.close();
   }
 
-  public getApp(): Application {
-    return this.app;
+  public start(): void {
+    this.app.listen(this.port, () => {
+      console.info('Server listening on port: ' + this.port);
+    });
   }
 }
