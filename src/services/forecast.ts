@@ -29,7 +29,7 @@ export class Forecast {
         pointsWithCorrectSources.push(...enrichedBeachData);
       }
       return this.mapForecastByTime(pointsWithCorrectSources);
-    // eslint-disable-next-line  
+      // eslint-disable-next-line
     } catch (error: any) {
       throw new ForecastProcessingInternalError(error.message);
     }
