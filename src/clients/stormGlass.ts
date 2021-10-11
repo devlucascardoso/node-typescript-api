@@ -91,6 +91,7 @@ export class StormGlass {
         }
       );
       return this.normalizeResponse(response.data);
+    // eslint-disable-next-line
     } catch (err: any) {
       /**
        * This is handling the Axios errors specifically
