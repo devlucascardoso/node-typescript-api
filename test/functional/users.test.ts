@@ -15,12 +15,12 @@ describe('Users functional tests', () => {
       const response = await global.testRequest.post('/users').send(newUser);
       expect(response.status).toBe(201);
       await expect(
-          AuthService.comparePasswords(newUser.password, response.body.password)
-        ).resolves.toBeTruthy();
+        AuthService.comparePasswords(newUser.password, response.body.password)
+      ).resolves.toBeTruthy();
       expect(response.body).toEqual(
-        expect.objectContaining( {
+        expect.objectContaining({
           ...newUser,
-          ... { password: expect.any(String) },
+          ...{ password: expect.any(String) },
         })
       );
     });

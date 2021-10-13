@@ -17,20 +17,20 @@ export abstract class BaseController {
     }
   }
 
-  private handleClientErrors(
-    error: mongoose.Error.ValidationError
-  ): { code: number; error: string } {
-    const duplicatedKindErrors = Object.values(error.errors).filter(
-      (err) => {
-				if (
-					err instanceof mongoose.Error.ValidatorError ||
-					err instanceof mongoose.Error.CastError
-				) {
-					return err.kind === CUSTOM_VALIDATION.DUPLICATED;
-				} else {
-					return null;
-				}
-			});
+  private handleClientErrors(error: mongoose.Error.ValidationError): {
+    code: number;
+    error: string;
+  } {
+    const duplicatedKindErrors = Object.values(error.errors).filter((err) => {
+      if (
+        err instanceof mongoose.Error.ValidatorError ||
+        err instanceof mongoose.Error.CastError
+      ) {
+        return err.kind === CUSTOM_VALIDATION.DUPLICATED;
+      } else {
+        return null;
+      }
+    });
     if (duplicatedKindErrors.length) {
       return { code: 409, error: error.message };
     }
