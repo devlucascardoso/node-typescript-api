@@ -15,12 +15,14 @@ export default class AuthService {
   ): Promise<string> {
     return await bcrypt.hash(password, salt);
   }
+
   public static async comparePasswords(
     password: string,
     hashedPassword: string
   ): Promise<boolean> {
     return await bcrypt.compare(password, hashedPassword);
   }
+
   public static generateToken(payload: object): string {
     return jwt.sign(payload, config.get('App.auth.key'), {
       expiresIn: config.get('App.auth.tokenExpiresIn'),
