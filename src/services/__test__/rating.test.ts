@@ -11,7 +11,7 @@ describe('Rating Service', () => {
   };
   const defaultRating = new Rating(defaultBeach);
   describe('Calculate rating for a given point', () => {
-const defaultPoint = {
+    const defaultPoint = {
       swellDirection: 110,
       swellHeight: 0.1,
       swellPeriod: 5,
@@ -101,7 +101,6 @@ const defaultPoint = {
       expect(rating).toBe(4);
     });
   });
-
 
   /**
    * Wave and wind only tests

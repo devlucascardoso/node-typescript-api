@@ -47,20 +47,13 @@ describe('Beaches functional tests', () => {
         .set({ 'x-access-token': token })
         .send(newBeach);
 
-      expect(response.status).toBe(422);
       //tests will be broken, not middleware
       expect(response.status).toBe(400);
       expect(response.body).toEqual({
         code: 400,
         error: 'Bad Request',
-        message:
-          'Beach validation failed: lat: Cast to Number failed for value "invalid_string" at path "lat"',
+        message: 'request.body.lat should be number',
       });
-      /*expect(response.body).toEqual({
-        code: 422,
-        error: 'Unprocessable Entity',
-        message: 'Beach validation failed: lat: Cast to Number failed for value "invalid_string" at path "lat"',
-      });*/
     });
 
     it.skip('should return 500 when there is any error other than validation error', async () => {

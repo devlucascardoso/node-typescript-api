@@ -11,6 +11,7 @@ export function authMiddleware(
     const decoded = AuthService.decodeToken(token as string);
     req.decoded = decoded;
     next();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     res.status?.(401).send({ code: 401, error: err.message });
   }

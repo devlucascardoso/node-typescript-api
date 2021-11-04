@@ -13,8 +13,9 @@ export class BeachesController extends BaseController {
       const beach = new Beach({ ...req.body, ...{ user: req.decoded?.id } });
       const result = await beach.save();
       res.status(201).send(result);
-    } catch (error : any) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
       this.sendCreateUpdateErrorResponse(res, error);
-      }
     }
   }
+}

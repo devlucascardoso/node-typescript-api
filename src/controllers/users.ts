@@ -13,6 +13,7 @@ export class UsersController extends BaseController {
       const user = new User(req.body);
       const newUser = await user.save();
       res.status(201).send(newUser);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       this.sendCreateUpdateErrorResponse(res, error);
     }
@@ -32,13 +33,13 @@ export class UsersController extends BaseController {
       !(await AuthService.comparePasswords(req.body.password, user.password))
     ) {
       return this.sendErrorResponse(res, {
-        code:401,
+        code: 401,
         message: 'Password does not match!',
-    });
-  }
-  const token = AuthService.generateToken(user.toJSON());
+      });
+    }
+    const token = AuthService.generateToken(user.toJSON());
 
-  return res.send({ ...user.toJSON(), ...{ token } });
+    return res.send({ ...user.toJSON(), ...{ token } });
   }
 
   @Get('me')
