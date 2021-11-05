@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import { StormGlass, ForecastPoint } from "@src/clients/stormGlass";
+import { StormGlass, ForecastPoint } from '@src/clients/stormGlass';
 import { InternalError } from '@src/util/errors/internal-error';
 import { Beach } from '@src/models/beach';
 import logger from '@src/logger';
@@ -25,7 +25,7 @@ export class Forecast {
   constructor(
     protected stormGlass = new StormGlass(),
     protected RatingService: typeof Rating = Rating
-  ) { }
+  ) {}
 
   public async processForecastForBeaches(
     beaches: Beach[],
