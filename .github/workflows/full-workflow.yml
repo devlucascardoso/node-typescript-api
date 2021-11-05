@@ -21,7 +21,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [12.x]
         mongodb-version: [4.2]
 
     steps:
@@ -40,10 +40,8 @@ jobs:
     - name: Install dependencies
       run: yarn --frozen-lockfile
 
-      - name: Run all tests
-        env:
-          MONGODB_URL: mongodb://localhost:${{ job.services.mongodb.ports[27017] }}/surf-forecastapi
-        run: yarn test
+    - name: Run all tests
+      run: yarn test
 
     - name: Deploy application
       if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' }}
