@@ -33,9 +33,34 @@ Principais tecnologias utilizadas no código.
 O código esta estruturado em branches para cada um dos capitulos. Para comparar as mudanças entre um capitulo e outro utilize a opção [Compare](https://github.com/waldemarnt/node-typescript-api/compare/step1...step2) do Github para ver
 as mudanças lado a lada.
 
-## Como rodar a pagina web
+## Como rodar a API em backend
 ----
-🔗[Clique aqui para ver como rodar a página web.](https://github.com/waldemarnt/node-typescript-api/tree/master/web)
+**Cloning the Repository**
+
+```
+$ git clone https://github.com/devlucascardoso/node-typescript-api.git && cd node-typescript-api
+```
+
+**Installing dependencies**
+```
+$ yarn install
+```
+
+_and_
+
+```
+$ yarn build
+```
+
+**Run the application**
+
+```
+$ yarn start
+```
+```
+# Open localhost:3000 it in your browser to see it working!
+```
+
 
 ## Como contribuir
 Em Construção (mas abra um Pull Request de qualquer maneira xD)
